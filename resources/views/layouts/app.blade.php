@@ -39,7 +39,7 @@
                                 <a class="nav-link" href="{{ route('clients.index') }}">{{ __('Clients') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ __('Services') }}</a>
+                                <a class="nav-link" href="{{ route('services.index') }}">{{ __('Services') }}</a>
                             </li>
                         </ul>
                     @endauth

@@ -1,7 +1,9 @@
 body {
     font-size: 1rem;
 }
-
+body a:hover {
+    text-decoration: none;
+}
 .content-header {
     margin-bottom: 1rem;
 }
@@ -27,3 +29,12 @@ body {
 .content {
     margin-bottom: 1rem;
 }
+
+
+/* services page */
+.list-box h4 span {
+    color: brown;
+}
+
+
+/* end service page */
