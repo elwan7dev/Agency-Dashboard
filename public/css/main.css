@@ -4,6 +4,26 @@ body {
 body a:hover {
     text-decoration: none;
 }
+
+
+/* Bootstrap edit */
+.card {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+}
+/* label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: 700;
+} */
+
+/* .card-header{
+  background-color: transparent;
+  position: relative;
+} */
+
+
+/* End Bootstrap edit */
+
+/* content-header */
 .content-header {
     margin-bottom: 1rem;
 }
@@ -29,12 +49,213 @@ body a:hover {
 .content {
     margin-bottom: 1rem;
 }
-
+/* End content-header */
 
 /* services page */
-.list-box h4 span {
+.list-box h4 span,
+.services-add h4 span {
     color: brown;
 }
 
-
 /* end service page */
+
+/* create client */
+
+.client-info .header,
+.services-add .header {
+    color: brown;
+}
+
+/* End create client */
+
+
+/* Start Profile Page */
+
+.info .col-md-3 {
+    padding-right: 7.5px;
+}
+.info .col-md-9 {
+    padding-left: 7.5px;
+}
+
+.profile-user-img {
+    border: 3px solid #adb5bd;
+    margin: 0 auto;
+    padding: 3px;
+    width: 100px;
+}
+
+.profile-username {
+    font-size: 21px;
+    margin-top: 5px;
+}
+
+.list-group-unbordered > .list-group-item {
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.personal-data .card-title {
+    float: left;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.services-data .card-header {
+    background-color: transparent;
+    position: relative;
+    color: #6c757d;
+    font-size: 1.075rem;
+}
+
+.card-body .services-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.card-body .services-list .item {
+    border-radius: 0.25rem;
+    background: #fff;
+    padding: 10px 0;
+}
+.card-body .services-list-in-card .item {
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.services-list .item .service-title {
+    font-weight: 600;
+    font-size: 17px;
+}
+.card-primary:not(.card-outline) > .card-header {
+  background-color: #007bff;
+}
+
+.card-primary:not(.card-outline) > .card-header,
+.card-primary:not(.card-outline) > .card-header a {
+  color: #ffffff;
+}
+
+.card-primary:not(.card-outline) > .card-header a.active {
+  color: #1f2d3d;
+}
+
+.card-primary.card-outline {
+  border-top: 3px solid #007bff;
+}
+
+.card-primary.card-outline-tabs > .card-header a:hover {
+  border-top: 3px solid #dee2e6;
+}
+
+.card-primary.card-outline-tabs > .card-header a.active {
+  border-top: 3px solid #007bff;
+}
+
+.card-primary:not(.card-outline) .btn-tool {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card-primary:not(.card-outline) .btn-tool:hover {
+  color: #ffffff;
+}
+
+/* End Profile page */
+
+/* img Rules */
+.img-sm,
+.img-md,
+.img-lg {
+    float: left;
+}
+
+.img-sm {
+    height: 1.875rem;
+    width: 1.875rem;
+}
+
+.img-sm + .img-push {
+    margin-left: 2.5rem;
+}
+
+.img-md {
+    width: 3.75rem;
+    height: 3.75rem;
+}
+
+.img-md + .img-push {
+    margin-left: 4.375rem;
+}
+
+.img-lg {
+    width: 6.25rem;
+    height: 6.25rem;
+}
+
+.img-lg + .img-push {
+    margin-left: 6.875rem;
+}
+
+.img-bordered {
+    border: 3px solid #adb5bd;
+    padding: 3px;
+}
+
+.img-bordered-sm {
+    border: 2px solid #adb5bd;
+    padding: 2px;
+}
+
+.img-rounded {
+    border-radius: 0.25rem;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.img-size-64,
+.img-size-50,
+.img-size-32 {
+    height: auto;
+}
+
+.img-size-64 {
+    width: 64px;
+}
+
+.img-size-50 {
+    width: 50px;
+}
+
+.img-size-32 {
+    width: 32px;
+}
+
+/* End img Rules */
+
+
+/* dashboard page */
+.home-stats h1 {
+    font-size: 50px;
+    color: #5d5b5b;
+}
+.home-stats .stat {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 6px;
+}
+.home-stats span {
+    display: block;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.home-stats .stat a {
+    color: #212529;
+}
+
+/* End dashbord page */
