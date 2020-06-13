@@ -49,7 +49,7 @@
                             @enderror
                         </div>
                        
-                        <button type="submit" class="btn btn-primary">Add New Service</button>
+                        <button type="submit" class="btn btn-primary">Add Service</button>
                         </form>    
                     </div>  
                 </div>  

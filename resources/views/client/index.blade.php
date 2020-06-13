@@ -26,7 +26,9 @@
 @section('content')
     <section class="content">
         <div class="container">
-            @if(count($clients) >= 1) 
+            <a href="{{ route('clients.create') }} " class="btn btn-primary mb-2"><i class="fas fa-plus mr-1"></i>New Client</a>
+
+            @if(! $clients->isEmpty()) 
                 <div class="table-responsive">
                     <table class="table main-table table-bordered  text-center">
                         <thead class="thead-light">
@@ -47,7 +49,7 @@
                             @foreach ($clients as $client)
                                 <tr>
                                     <th scope="row">{{$client['id']}}</th>
-                                    <td title={{$client['decription']}}>{{$client['title']}} </td>
+                                    <td scope="row" title="Client Profile"> <a href="{{ route('clients.show', ['client'=>$client]) }}">{{$client['title']}}</a>  </td>
                                     <td>{{$client['phone']}} </td>
                                     <td>{{$client['status']}} </td>
                                     <td>{{$client['contract_start']}} </td>
@@ -55,15 +57,22 @@
                                     <td>{{$client['created_at']}} </td>
                                     <td>
                                         {{-- The route helper will automatically extract the model's primary key: --}}
-                                        <a href="#" class="btn btn-primary btn-sm">Show</a>
+                                        @if ($client->services->isEmpty())
+                                            {{-- client doesn't subscribe any service --}}
+                                            <a href="{{ route('clients.edit', ['client' => $client]) }}" class="btn btn-warning btn-sm">Add</a>
+                                        @else
+                                            {{-- client subscribe at least one service --}}
+                                            <a href="{{ route('clients.show', ['client' => $client]) }}" class="btn btn-primary btn-sm">Show</a>
+                                        @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('clients.edit', ['client' => $client]) }}" class="btn btn-success btn-sm">Edit</a>
+                                        
+                                        <a href="{{ route('clients.edit', ['client' => $client]) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                                         {{-- The route helper will automatically extract the model's primary key: --}}
                                         <form action="{{ route('clients.destroy', ['client'=>$client]) }}" method="POST" class="float-right">
                                             @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm confirm">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm confirm"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -74,7 +83,9 @@
             @else
                 <div class="alert alert-info"> No Data Found</div>
             @endif
-            <a href="{{ route('clients.create') }} " class="btn btn-primary">Add Client</a> 
+            {{ $clients->links() }}
+
+
         </div>
     </section>
     
