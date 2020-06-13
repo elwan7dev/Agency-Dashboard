@@ -38,19 +38,17 @@
                                             <h4><span># </span>Facbook</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($fbServices as $service)
-                                                    @if ($service['type'] == 'facebook')
                                                         <li class="list-group-item">
                                                             <a href="#">{{$service['title']}}</a>
                                                             
                                                             <form action="{{ route('services.destroy', ['service'=>$service]) }}" method="POST" class="float-right">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm">Delete</button>
+                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm"><i class="fas fa-trash-alt"></i></button>
                                                             </form>
-                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2">Edit</a>
+                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2"><i class="fas fa-edit"></i></a>
                                                             
                                                         </li>
-                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -60,16 +58,14 @@
                                             <h4><span># </span>Twitter</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($twServices as $service)
-                                                    @if ($service['type'] == 'twitter')
                                                         <li class="list-group-item" title="{{$service['type']}} ">
                                                             <a href="#">{{$service['title']}}</a>  
                                                             <form action="{{ route('services.destroy', ['service'=>$service]) }}" method="POST" class="float-right">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm">Delete</button>
+                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm"><i class="fas fa-trash-alt"></i></button>
                                                             </form>
-                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2">Edit</a>                                            </li>
-                                                    @endif
+                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2"><i class="fas fa-edit"></i></a>                                            </li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -79,18 +75,16 @@
                                             <h4><span># </span>Other Services</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($othServices as $service)
-                                                    @if ($service['type'] == 'other')
                                                         <li class="list-group-item" title="{{$service['type']}} ">
                                                             <a href="#">{{$service['title']}}</a>
                                                             {{-- The route helper will automatically extract the model's primary key: --}}
                                                             <form action="{{ route('services.destroy', ['service'=>$service]) }}" method="POST" class="float-right">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm">Delete</button>
+                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm"><i class="fas fa-trash-alt"></i></button>
                                                             </form>
-                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2">Edit</a>
+                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2"><i class="fas fa-edit"></i></a>
                                                         </li>
-                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -108,17 +102,15 @@
                                             <h4><span># </span>Instagram</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($instaServices as $service)
-                                                    @if ($service['type'] == 'instagram')
                                                         <li class="list-group-item">
                                                             <a href="#">{{$service['title']}}</a>
                                                             <form action="{{ route('services.destroy', ['service'=>$service]) }}" method="POST" class="float-right">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm">Delete</button>
+                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm"><i class="fas fa-trash-alt"></i></button>
                                                             </form>
-                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2">Edit</a>
+                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2"><i class="fas fa-edit"></i></a>
                                                         </li>
-                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -129,17 +121,15 @@
                                             <h4><span># </span>Youtube</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($tubeServices as $service)
-                                                    @if ($service['type'] == 'youtube')
                                                         <li class="list-group-item" >
                                                             <a href="#" title="{{$service['type']}}" >{{$service['title']}}</a>
                                                             <form action="{{ route('services.destroy', ['service'=>$service]) }}" method="POST" class="float-right">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm">Delete</button>
+                                                                <button type="submit" class="btn btn-danger btn-sm float-right confirm"><i class="fas fa-trash-alt"></i></button>
                                                             </form>
-                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2">Edit</a>
+                                                            <a href="{{ route('services.edit', ['service'=>$service]) }}" class="btn btn-success btn-sm float-right mr-2"><i class="fas fa-edit"></i></a>
                                                         </li>
-                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -154,7 +144,7 @@
             @else
                 <div class="alert alert-info">No Service Found</div>   
             @endif
-            <a href="{{ route('services.create') }} " class="btn btn-primary">Add new Service</a>
+            <a href="{{ route('services.create') }} " class="btn btn-primary"><i class="fas fa-plus mr-1"></i> new Service</a>
 
             
 

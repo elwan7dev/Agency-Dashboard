@@ -79,8 +79,8 @@ class ClientController extends Controller
             'phone' => 'required',
             'status' => 'required',
             'desc' => 'required',
-            'contract-start' => ['required', 'date'],
-            'contract-end' => ['required' ,'date', 'after_or_equal:contract-start'],
+            'contract_start' => ['required', 'date'],
+            'contract_end' => ['required' ,'date', 'after_or_equal:contract_start'],
         ]);
 
         // create new instance from client model
@@ -89,8 +89,8 @@ class ClientController extends Controller
         $client->description = $request->input('desc');
         $client->phone = $request->input('phone');
         $client->status = $request->input('status');
-        $client->contract_start = $request->input('contract-start');
-        $client->contract_end = $request->input('contract-end');
+        $client->contract_start = $request->input('contract_start');
+        $client->contract_end = $request->input('contract_end');
 
         $client->save();
         
@@ -175,8 +175,8 @@ class ClientController extends Controller
             'phone' => 'required',
             'status' => 'required',
             'desc' => 'required',
-            'contract-start' => ['required', 'date'],
-            'contract-end' => ['required' ,'date', 'after_or_equal:contract-start'],
+            'contract_start' => ['required', 'date'],
+            'contract_end' => ['required' ,'date', 'after_or_equal:contract_start'],
 
         ]);
 
@@ -186,8 +186,8 @@ class ClientController extends Controller
         $client->description = $request->input('desc');
         $client->phone = $request->input('phone');
         $client->status = $request->input('status');
-        $client->contract_start = $request->input('contract-start');
-        $client->contract_end = $request->input('contract-end');
+        $client->contract_start = $request->input('contract_start');
+        $client->contract_end = $request->input('contract_end');
         $client->save();
 
         // update specefic client's services in povit table service_client
