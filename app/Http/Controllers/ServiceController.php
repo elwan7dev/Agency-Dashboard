@@ -6,6 +6,17 @@ use Illuminate\Http\Request;
 use App\Service;
 class ServiceController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // authintication using middleware
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

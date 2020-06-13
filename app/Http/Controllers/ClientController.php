@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\Service;
 
 class ClientController extends Controller
 {
@@ -27,8 +28,14 @@ class ClientController extends Controller
     public function index()
     {
         // fetch all clients from DB
-        $clients = Client::orderBy('created_at', 'DESC')->get();
+        $clients = Client::orderBy('created_at', 'DESC')->paginate(10);
         $clientsCount = $clients->count();
+
+       /*  $client = Client::find(9);
+        foreach ($client->services as $service) {
+            echo $service->pivot->service_id;
+        } */
+
         return \view('client.index', ['clients' => $clients , 'count' => $clientsCount]);
     }
 
@@ -39,7 +46,22 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return \view('client.create');   
+        $allServices = Service::all();
+
+        $fbServices = Service::orderBy('created_at')->where('type' , 'facebook')->get();
+        $twServices = Service::orderBy('created_at')->where('type' , 'twitter')->get();
+        $instaServices = Service::orderBy('created_at')->where('type' , 'instagram')->get();
+        $tubeServices = Service::orderBy('created_at')->where('type' , 'youtube')->get();
+        $othServices = Service::orderBy('created_at')->where('type' , 'other')->get();
+                                        
+        return \view('client.create' ,  [   
+            'allServices' => $allServices ,
+            'fbServices' => $fbServices,
+            'twServices' => $twServices,
+            'instaServices' => $instaServices,
+            'tubeServices' => $tubeServices,
+            'othServices' => $othServices,
+        ]);
     }
 
     /**
@@ -55,10 +77,10 @@ class ClientController extends Controller
             'title' => ['required' , 'string'],
             'desc' => ['required' , 'string'],
             'phone' => 'required',
+            'status' => 'required',
             'desc' => 'required',
             'contract-start' => ['required', 'date'],
             'contract-end' => ['required' ,'date', 'after_or_equal:contract-start'],
-
         ]);
 
         // create new instance from client model
@@ -71,7 +93,11 @@ class ClientController extends Controller
         $client->contract_end = $request->input('contract-end');
 
         $client->save();
-        return \redirect("/clients")->with('success' , 'New Client is Added');
+        
+        // save array of services in povit table service_client
+        $client->services()->sync($request->services, false);
+        
+        return \redirect()->route('clients.index') ->with('success' , 'New Client is Added');
     }
 
     /**
@@ -82,7 +108,18 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Client::find($id);
+       
+        if (empty($client)) {
+            return \redirect()->route('clients.index')->with('error', 'No Such Id');
+        }else {
+            // array of client services path to the view
+            $clientServices = $client->services;
+            return \view('client.show', [
+                'client' => $client,
+                'clientServices'=> $clientServices
+            ]);
+        }
     }
 
     /**
@@ -93,12 +130,33 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
+        $allServices = Service::all();
+
+        $fbServices = Service::orderBy('created_at')->where('type' , 'facebook')->get();
+        $twServices = Service::orderBy('created_at')->where('type' , 'twitter')->get();
+        $instaServices = Service::orderBy('created_at')->where('type' , 'instagram')->get();
+        $tubeServices = Service::orderBy('created_at')->where('type' , 'youtube')->get();
+        $othServices = Service::orderBy('created_at')->where('type' , 'other')->get();
+
         $client = Client::find($id);
-        if (!empty($client)) {
+       
+        if (empty($client)) {
+            return \redirect()->route('clients.index')->with('error', 'No Such Id');
         }else {
-            return \redirect('/clients')->with('error', 'No Such Id');
+            // array of client services path to the view
+            $clientServices = $client->services;
+            return \view('client.edit', [
+                'client' => $client,
+                'allServices' => $allServices ,
+                'fbServices' => $fbServices,
+                'twServices' => $twServices,
+                'instaServices' => $instaServices,
+                'tubeServices' => $tubeServices,
+                'othServices' => $othServices,
+                'clientServices'=> $clientServices
+            ]);
         }
-        return \view('client.edit', ['client' => $client]);
+        
     }
 
     /**
@@ -115,6 +173,7 @@ class ClientController extends Controller
             'title' => ['required' , 'string'],
             'desc' => ['required' , 'string'],
             'phone' => 'required',
+            'status' => 'required',
             'desc' => 'required',
             'contract-start' => ['required', 'date'],
             'contract-end' => ['required' ,'date', 'after_or_equal:contract-start'],
@@ -131,6 +190,10 @@ class ClientController extends Controller
         $client->contract_end = $request->input('contract-end');
         $client->save();
 
+        // update specefic client's services in povit table service_client
+        $client->services()->sync($request->services);
+
+
         return \redirect('/clients')->with('success' , 'Client has been Updated');
     }
 
@@ -142,9 +205,44 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $client = Client::find($id);
-        $client->delete();
-
-        return \redirect('/clients')->with('success' , 'Client is Deleted');
+        $client =  Client::find($id);
+        if (! empty($client)){
+            $client->delete();
+            return \redirect()->route('clients.index')->with('success' , 'Client is Deleted');
+        }else
+            return \redirect()->route('clients.index')->with('error' , 'There is no such id');
+        
     }
+
+
+    /* public function addServices($id)
+    {
+        $allServices = Service::all();
+
+        $fbServices = Service::orderBy('created_at')->where('type' , 'facebook')->get();
+        $twServices = Service::orderBy('created_at')->where('type' , 'twitter')->get();
+        $instaServices = Service::orderBy('created_at')->where('type' , 'instagram')->get();
+        $tubeServices = Service::orderBy('created_at')->where('type' , 'youtube')->get();
+        $othServices = Service::orderBy('created_at')->where('type' , 'other')->get();
+                                        
+        $count = count($allServices);
+        return \view('client.add-services' ,  [   
+            'allServices' => $allServices ,
+            'fbServices' => $fbServices,
+            'twServices' => $twServices,
+            'instaServices' => $instaServices,
+            'tubeServices' => $tubeServices,
+            'othServices' => $othServices,
+            'count' => $count
+            ]);
+    } */
+
+   /*  public function storeServices(Request $request , $id)
+    {
+        $client = Client::find($id);
+        $client->services()->sync($request->services, false);
+        $client = Client::find(9);
+        $client->services()->sync([], false);
+        return 'success';
+    } */
 }
