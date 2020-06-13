@@ -8,7 +8,7 @@
             <div class="card ">
                 <div class="card-header">Add New Client</div>
                 <div class="card-body">
-                    <form action="{{ route('clients.store') }}" method="post">
+                    <form action="{{ route('clients.store') }}" method="post" id="client_form">
                         @csrf
                         <div class="client-info">
                             <h4 class="header">Client Personal Info</h4>
@@ -16,7 +16,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="title">Title</label>
-                                    <input type="text" name="title"
+                                    <input type="text" name="title" minlength="2" required
                                         class="form-control @error('title') is-invalid @enderror" placeholder="Title"
                                         value="{{old('title')}}" id="title" autofocus autocomplete>
                                     @error('title')
@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="phone">Contact Phone</label>
-                                    <input type="text" name="phone"
+                                    <input type="text" name="phone" required
                                         class="form-control @error('phone') is-invalid @enderror"
                                         placeholder="Contact Phone" value="{{old('phone')}}" id="phone"
                                         autocomplete="phone">
@@ -40,7 +40,7 @@
                                 <div class="form-group col-md-3">
                                     <label for="status">Status</label>
                                     <select name="status" id="status"
-                                        class="form-control @error('status') is-invalid @enderror">
+                                        class="form-control @error('status') is-invalid @enderror" required>
                                         <option value="" selected>Choose ...</option>
                                         <option value="personal">Personal</option>
                                         <option value="company">Company</option>
@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <label for="desc">Description</label>
                                 <textarea name="desc" id="desc" class="form-control @error('desc') is-invalid @enderror"
-                                    placeholder="Desc">{{old('desc')}}</textarea>
+                                    placeholder="Client Description" required>{{old('desc')}}</textarea>
                                 @error('desc')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -67,20 +67,20 @@
                             
                             <div class="form-row">
                                 <div class="from-group col-md-6">
-                                    <label for="contract-start">Contract Start Date</label>
-                                    <input type="date" name="contract-start" id="contract-start"
-                                        class="form-control  @error('contract-start') is-invalid @enderror"">
-                                    @error('contract-start')     
+                                    <label for="contract_start">Contract Start Date</label>
+                                    <input type="date" name="contract_start" id="contract_start" required
+                                        class="form-control  @error('contract_start') is-invalid @enderror"">
+                                    @error('contract_start')     
                                         <span class=" invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
                                 <div class="from-group col-md-6">
-                                    <label for="contract-end">Contract End Date</label>
-                                    <input type="date" name="contract-end" id="contract-end"
-                                        class="form-control @error('contract-start') is-invalid @enderror"">
-                                    @error('contract-end')     
+                                    <label for="contract_end">Contract End Date</label>
+                                    <input type="date" name="contract_end" id="contract_end" required
+                                        class="form-control @error('contract_end') is-invalid @enderror"">
+                                    @error('contract_end')     
                                         <span class=" invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                     </span>

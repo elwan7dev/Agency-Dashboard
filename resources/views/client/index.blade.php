@@ -52,9 +52,9 @@
                                     <td scope="row" title="Client Profile"> <a href="{{ route('clients.show', ['client'=>$client]) }}">{{$client['title']}}</a>  </td>
                                     <td>{{$client['phone']}} </td>
                                     <td>{{$client['status']}} </td>
-                                    <td>{{$client['contract_start']}} </td>
-                                    <td>{{$client['contract_end']}} </td>
-                                    <td>{{$client['created_at']}} </td>
+                                    <td>{{date('d/m/Y', strtotime($client->contract_start))}}</td>
+                                    <td>{{date('d/m/Y', strtotime($client->contract_end))}}</td>
+                                    <td>{{date('d/m/Y', strtotime($client->created_at))}}</td>
                                     <td>
                                         {{-- The route helper will automatically extract the model's primary key: --}}
                                         @if ($client->services->isEmpty())

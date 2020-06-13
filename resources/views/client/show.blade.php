@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h1>{{$client['title']}}</h1>
+                <h1>{{$client['status']}}  subscribe</h1>
             </div>
             <!-- breadcrumb -->
             <div class="col-sm-6">
@@ -40,9 +40,9 @@
                                 alt="Client profile picture">
                         </div>
 
-                        <h3 class="profile-username text-center">{{$client['status']}}</h3>
+                        <h3 class="profile-username text-center">{{$client->title}}</h3>
 
-                        <p class="text-muted text-center">{{$client['created_at']}}</p>
+                        <p class="text-muted text-center">{{date('D, d M Y' , strtotime($client->created_at))}}</p>
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
@@ -75,11 +75,11 @@
                         <hr>
 
                         <strong><i class="far fa-calendar-alt mr-1"></i> Contract Start Date</strong>
-                        <p class="text-muted">{{$client['contract_start']}}</p>
+                        <p class="text-muted">{{date('D, d M Y' , strtotime($client->contract_start))}}</p>
                         <hr>
 
                         <strong><i class="far fa-calendar-times mr-1"></i> Contract End Date</strong>
-                        <p class="text-muted">{{$client['contract_end']}}</p>
+                        <p class="text-muted">{{date('D, d M Y' , strtotime($client->contract_end))}}</p>
                         <hr>
 
                         <strong><i class="far fa-file-alt mr-1"></i> Description</strong>
@@ -111,15 +111,15 @@
                                         <a href="#" class="service-title">{{$service->title}}</a>
                                         <small class="text-muted">On {{$service->type}}</small>
                                         <div class="service-data">
-                                            <span class="text-muted">Subscribed at {{$service->pivot->created_at}}</span>
+                                            <span class="text-muted" title="{{$service->pivot->created_at}}">Subscribed at {{date('D, d M Y' , strtotime($service->pivot->created_at))}}</span>
                                             <a href="{{$service->pivot->link}}"><span class="badge badge-primary float-right">Service Link </span> </a> 
                                         </div>
                                     </li>
                                 @endforeach
                             </ul>
                         @else
-                            <div class="alert alert-danger">No Service Subscribed yet!</div>
-                            <a href="{{ route('clients.edit', ['client' => $client]) }}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>New Service</a>
+                            <div class="alert alert-danger m-2">No Service Subscribed yet!</div>
+                            <a href="{{ route('clients.edit', ['client' => $client]) }}" class="btn btn-primary m-2"><i class="fas fa-plus mr-1"></i>New Service</a>
                         @endif
                         
 

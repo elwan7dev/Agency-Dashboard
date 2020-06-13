@@ -91,22 +91,22 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="from-group col-md-6">
-                                        <label for="contract-start">Contract Start Date</label>
-                                        <input type="date" name="contract-start" id="contract-start"
-                                            class="form-control  @error('contract-start') is-invalid @enderror"
+                                        <label for="contract_start">Contract Start Date</label>
+                                        <input type="date" name="contract_start" id="contract_start"
+                                            class="form-control  @error('contract_start') is-invalid @enderror"
                                             value="{{$client['contract_start']}}">
-                                        @error('contract-start')
+                                        @error('contract_start')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
                                     </div>
                                     <div class="from-group col-md-6">
-                                        <label for="contract-end">Contract End Date</label>
-                                        <input type="date" name="contract-end" id="contract-end"
-                                            class="form-control @error('contract-start') is-invalid @enderror"
+                                        <label for="contract_end">Contract End Date</label>
+                                        <input type="date" name="contract_end" id="contract_end"
+                                            class="form-control @error('contract_end') is-invalid @enderror"
                                             value="{{$client['contract_end']}}">
-                                        @error('contract-end')
+                                        @error('contract_end')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -116,7 +116,7 @@
 
                             </div>
                             <div class="services-add mt-4">
-                                <h4 class="header">Add Services</h4>
+                                <h4 class="header">Edit Services</h4>
                                 <hr>
                                 <div class="row mb-2">
                                     {{-- col --}}
@@ -148,7 +148,6 @@
                                             <h4><span># </span>Twitter</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($twServices as $service)
-                                                @if ($service['type'] == 'twitter')
                                                 <li class="list-group-item" title="{{$service['type']}} ">
                                                     <div class="icheck-danger">
                                                         <input type="checkbox" name="services[]" id="service-{{$service['id']}}"
@@ -161,7 +160,6 @@
                                                         <label for="service-{{$service['id']}}">{{$service['title']}}</label>
                                                     </div>
                                                 </li>
-                                                @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -171,7 +169,6 @@
                                             <h4><span># </span>Other Services</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($othServices as $service)
-                                                @if ($service['type'] == 'other')
                                                 <li class="list-group-item" title="{{$service['type']}} ">
                                                     <div class="icheck-danger">
                                                         <input type="checkbox" name="services[]" id="service-{{$service['id']}}"
@@ -184,7 +181,6 @@
                                                         <label for="service-{{$service['id']}}">{{$service['title']}}</label>
                                                     </div>
                                                 </li>
-                                                @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -202,7 +198,6 @@
                                             <h4><span># </span>Instagram</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($instaServices as $service)
-                                                @if ($service['type'] == 'instagram')
                                                 <li class="list-group-item">
                                                     <div class="icheck-danger">
                                                         <input type="checkbox" name="services[]" id="service-{{$service['id']}}"
@@ -215,7 +210,6 @@
                                                         <label for="service-{{$service['id']}}">{{$service['title']}}</label>
                                                     </div>
                                                 </li>
-                                                @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -226,7 +220,6 @@
                                             <h4><span># </span>Youtube</h4>
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($tubeServices as $service)
-                                                @if ($service['type'] == 'youtube')
                                                 <li class="list-group-item">
                                                     <div class="icheck-danger">
                                                         <input type="checkbox" name="services[]" id="service-{{$service['id']}}"
@@ -239,7 +232,6 @@
                                                         <label for="service-{{$service['id']}}">{{$service['title']}}</label>
                                                     </div>
                                                 </li>
-                                                @endif
                                                 @endforeach
                                             </ul>
                                         </div>
