@@ -5,11 +5,10 @@ body a:hover {
     text-decoration: none;
 }
 
-
 /* Bootstrap edit */
 .card {
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
-  margin-bottom: 1rem;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
 }
 /* label:not(.form-check-label):not(.custom-file-label) {
   font-weight: 700;
@@ -19,7 +18,6 @@ body a:hover {
   background-color: transparent;
   position: relative;
 } */
-
 
 /* End Bootstrap edit */
 
@@ -67,7 +65,6 @@ body a:hover {
 }
 
 /* End create client */
-
 
 /* Start Profile Page */
 
@@ -120,7 +117,7 @@ body a:hover {
 .card-body .services-list .item {
     border-radius: 0.25rem;
     background: #fff;
-    padding: 10px 0;
+    padding: 10px 10px;
 }
 .card-body .services-list-in-card .item {
     border-radius: 0;
@@ -131,36 +128,36 @@ body a:hover {
     font-size: 17px;
 }
 .card-primary:not(.card-outline) > .card-header {
-  background-color: #007bff;
+    background-color: #007bff;
 }
 
 .card-primary:not(.card-outline) > .card-header,
 .card-primary:not(.card-outline) > .card-header a {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .card-primary:not(.card-outline) > .card-header a.active {
-  color: #1f2d3d;
+    color: #1f2d3d;
 }
 
 .card-primary.card-outline {
-  border-top: 3px solid #007bff;
+    border-top: 3px solid #007bff;
 }
 
 .card-primary.card-outline-tabs > .card-header a:hover {
-  border-top: 3px solid #dee2e6;
+    border-top: 3px solid #dee2e6;
 }
 
 .card-primary.card-outline-tabs > .card-header a.active {
-  border-top: 3px solid #007bff;
+    border-top: 3px solid #007bff;
 }
 
 .card-primary:not(.card-outline) .btn-tool {
-  color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .card-primary:not(.card-outline) .btn-tool:hover {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 /* End Profile page */
@@ -237,7 +234,6 @@ body a:hover {
 
 /* End img Rules */
 
-
 /* dashboard page */
 .home-stats h1 {
     font-size: 50px;
@@ -256,6 +252,81 @@ body a:hover {
 
 .home-stats .stat a {
     color: #212529;
+}
+
+.card-header .card-tools {
+    float: right;
+    margin-right: -0.625rem;
+}
+
+.card-header .btn-tool {
+    background: 0 0;
+    color: #adb5bd;
+    font-size: 0.875rem;
+    margin: -0.75rem 0;
+    padding: 0.25rem 0.5rem;
+}
+
+table .admin {
+    margin-left: 5px;
+}
+table .admin .fa-award {
+    color: #daa520;
+}
+
+.latest .card .products-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.latest .products-list .item {
+    border-radius: 0.25rem;
+    background: #fff;
+    padding: 10px 0;
+}
+
+.latest .product-list-in-card .item {
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.latest .product-list-in-card .item:last-child {
+    border-bottom: none;
+}
+.latest .card .card-footer {
+    border-top: none;
+}
+
+#users-card .card-header,
+#items-card .card-header {
+    border-bottom: none;
+}
+.latest .products-list .product-img {
+    float: left;
+}
+.latest .products-list .product-img img {
+    height: 50px;
+    width: 50px;
+}
+
+.latest .products-list .product-info {
+    margin-left: 60px;
+}
+
+.latest .products-list .product-title {
+    font-weight: 600;
+}
+
+.latest .products-list .product-description {
+    color: #6c757d;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.products-list:last-child {
+    border-radius: 0 0 calc(0.25rem - 0) calc(0.25rem - 0);
+    border-bottom: none;
 }
 
 /* End dashbord page */
