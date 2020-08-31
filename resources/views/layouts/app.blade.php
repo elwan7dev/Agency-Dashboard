@@ -45,10 +45,10 @@
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}<span class="sr-only">(current)</span></a>
                             </li> --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('clients.index') }}">{{ __('Clients') }}</a>
+                                <a class="nav-link {{ Request::is('clients*') ? 'active' : '' }}" href="{{ route('clients.index') }}">{{ __('Clients') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('services.index') }}">{{ __('Services') }}</a>
+                                <a class="nav-link {{ Request::is('services*') ? 'active' : '' }}" href="{{ route('services.index') }}">{{ __('Services') }}</a>
                             </li>
                         </ul>
                     @endauth

@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h1>Clients</h1> 
-                    <span class="badge badge-primary"> {{$count}} Clients Found</span>
+                    <span class="badge badge-primary"> {{$clients->count()}} Clients Found</span>
                 </div>
                 <!-- breadcrumb -->
                 <div class="col-sm-6">

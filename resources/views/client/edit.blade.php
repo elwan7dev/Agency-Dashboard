@@ -80,10 +80,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="desc">Description</label>
-                                    <textarea name="desc" id="desc"
-                                        class="form-control @error('desc') is-invalid @enderror">{{$client['description']}}</textarea>
-                                    @error('desc')
+                                    <label for="description">Description</label>
+                                    <textarea name="description" id="description"
+                                        class="form-control @error('description') is-invalid @enderror">{{$client->description}}</textarea>
+                                    @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

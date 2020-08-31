@@ -36,6 +36,8 @@
                                     @if (! $fbServices->isEmpty())
                                         <div class="col-md-12 p-0 mb-3">
                                             <h4><span># </span>Facbook</h4>
+                                            {{-- <span class="badge badge-primary"> {{$fbServices->count()}}</span> --}}
+
                                             <ul class="list-group list-group-flush">
                                                 @foreach ($fbServices as $service)
                                                         <li class="list-group-item">
