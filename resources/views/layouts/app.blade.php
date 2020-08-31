@@ -9,7 +9,7 @@
     <link rel="icon" href="/logo.png" >
 
 
-    <title>{{ config('app.name', 'DigiSay') }} @yield('title')</title>
+    <title>{{ config('app.name', 'Agency') }} @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,7 +31,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                    {{ config('app.name', 'DigiSay') }}
+                    {{ config('app.name', 'Agency') }}
                   </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
